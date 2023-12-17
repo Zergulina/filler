@@ -5,6 +5,7 @@ var gameInit = () => {
             document.cookie = "record" + i + "=0";
         }
     }
+    console.log(document.cookie)
 }
 
 document.addEventListener("DOMContentLoaded", gameInit);

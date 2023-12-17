@@ -158,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (aquaCounter > 240) {
         let minIndex = 0;
         getCookie();
-        console.log(cookieDict);
         for (let i = 0; i < 10; ++i) {
           if (cookieDict[i][1] < cookieDict[minIndex][1]) {
             minIndex = i;
@@ -175,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (pinkCounter > 240) {
         let minIndex = 0;
         getCookie();
-        console.log(cookieDict);
         for (let i = 0; i < 10; ++i) {
           if (cookieDict[i][1] < cookieDict[minIndex][1]) {
             minIndex = i;
@@ -196,14 +194,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   var getCookie = () => {
-    cookieDict = [];
-    console.log(document.cookie);
-    splitedCookie = document.cookie.split(";").map(Function.prototype.call, String.prototype.trimStart);
-    for (let i = 0; i < 22; i += 2) {
-      cookieDict[parseInt(i / 2)] = [splitedCookie[i].split("=")[1], splitedCookie[i + 1].split("=")[1]];
+    let splitedCookie = document.cookie.split(";").map(Function.prototype.call, String.prototype.trimStart);
+    console.log(splitedCookie)
+    for (let i = 0; i < 11; i++) {
+      cookieDict.push([]);
+      for (let j = 0; j < 22; j++) {
+        if (splitedCookie[j].split("=")[0].slice(6) == i && splitedCookie[j].split("=")[0].slice(0, 6) == 'player') {
+          cookieDict[i][0] = (splitedCookie[j].split("=")[1]);
+          break;
+        }
+      }
+      for (let j = 1; j < 22; j++) {
+        if (splitedCookie[j].split("=")[0].slice(6) == i && splitedCookie[j].split("=")[0].slice(0, 6) == 'record') {
+          cookieDict[i][1] = (splitedCookie[j].split("=")[1]);
+          break;
+        }
+      }
     }
   }
-
   var setCookie = (playerName, playerScore) => {
     for (let i = 0; i < 10; ++i) {
       document.cookie = "player" + i + "=" + cookieDict[i][0];
@@ -211,5 +219,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     document.cookie = "player" + 10 + "=" + playerName;
     document.cookie = "record" + 10 + "=" + playerScore;
+    console.log(document.cookie)
   }
 });
