@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#table_game{
+  width: 100%;
+  border: 1px solid black;
+  
+}
+
+tr {
+  font-size: 30px;
+  font-weight: 1000;
+  
+}
+
+.activePlayer {
+	animation: TextColor 4s infinite linear;
+}
+
+@keyframes TextColor {
+  0% {
+	  color: #FF0000;
+	}
+	16.6% {
+	  color: #FFA500;
+	}
+	33.2% {
+	  color: #FFFF00;
+	}
+	49.8% {
+	  color: #7FFF00;
+	}
+	66.4% {
+	  color: #00FFFF;
+	}
+	83% {
+	  color: #0000FF;
+	}
+	100% {
+	  color: #9932CC;
+	}
+  } 
+
+#Player_1{
+  text-align: top;
+  border: 1px solid black;
+  width:15%;
+}
+
+#Player_2{
+  text-align: top;
+  border: 1px solid black;
+  width:15%;
+}
+
+#game{
+  padding-left: 200px;
+  width:70%;
+}
+#grid-container {
+  display: grid;
+  margin-inline: 100;
+  grid-template-columns: repeat(24, 30px);
+  grid-template-rows: repeat(20, 30px);
+}
+
+.grid-item {
+  border: 2px solid #000;
+  --x: 0;
+  --y: 0;
+}
+
+
+#score {
+  margin-top: 10px;
+}
